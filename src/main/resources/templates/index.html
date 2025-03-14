@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home page</title>
+    <th:block th:replace="~{fragments/main.html::bootstrap}"></th:block>  <!-- ~ :  Alt+126(numerini)-->
 </head>
-<body>
+<body class="bg-info">
     <h3 th:text ="|Best of the year by ${username}|" />
 </body>
 </html>

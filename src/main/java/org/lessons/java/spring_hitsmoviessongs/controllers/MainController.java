@@ -42,7 +42,7 @@ public class MainController {
         List<Movie> movies = getBestMovies();
         List<String> movieTitles = movies.stream().map(Movie::getTitle).toList();
         String bestmovies = String.join(", ", movieTitles);
-        model.addAttribute("bestmovies", bestmovies);
+        model.addAttribute("bestmovies", movies);  //step 4 of the assignment i need only a list of objs
         return "movies";
     }
     @GetMapping("/movies/{id}")  //if use a path with {}, you must use @PathVariable!
@@ -61,7 +61,7 @@ public class MainController {
         List<Song> songs = getBestSongs();
         List<String> songsTitles = songs.stream().map(Song::getTitle).toList();
         String bestsongs =String.join(", ",songsTitles);
-        model.addAttribute("bestsongs", bestsongs);
+        model.addAttribute("bestsongs", songs);
         return "songs";
     }
     @GetMapping("/songs/{id}")
@@ -72,6 +72,5 @@ public class MainController {
         model.addAttribute("targetsong",targetsong);
         return "songs";
     }
-
 
 }

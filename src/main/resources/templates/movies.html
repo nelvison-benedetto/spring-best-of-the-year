@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Movies</title>
+    <th:block th:replace="~{fragments/main.html::bootstrap}"></th:block>  <!-- ~ :  Alt+126(numerini)-->
 </head>
-<body>
+<body class="bg-warning">
     <h2 th:if="${bestmovies != null}" th:text="|Best movies: ${bestmovies}|"></h2>
     <h2 th:text="${targetmovie!=null} ? 'Your movie: '+${targetmovie.title}   : 'Movie not found'"></h2>  
         <!--w java beans u can direclty access w targetmovie.title-->

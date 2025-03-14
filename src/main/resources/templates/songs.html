@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Songs</title>
+    <th:block th:replace="~{fragments/main.html::bootstrap}"></th:block>  <!-- ~ :  Alt+126(numerini)-->
 </head>
-<body>
+<body class="bg-danger">
     <h2 th:if="${bestsongs != null}" th:text="|Best songs: ${bestsongs}|"></h2>
     <h2 th:text="${targetsong!=null} ? 'Your song: '+${targetsong.title}   : 'Song not found'"></h2>  
         <!--w java beans u can direclty access w targetsong.title-->
