@@ -6,6 +6,8 @@
     <title>Document</title>
 </head>
 <body>
-    <h2 th:text="|Best movies: ${bestmovies}|"/>
+    <h2 th:if="${bestmovies != null}" th:text="|Best movies: ${bestmovies}|"></h2>
+    <h2 th:text="${targetmovie!=null} ? 'Your movie: '+${targetmovie.title}   : 'Movie not found'"></h2>  
+        <!--w java beans u can direclty access w targetmovie.title-->
 </body>
 </html>
