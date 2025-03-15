@@ -4,11 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movies</title>
-    <th:block th:replace="~{fragments/main.html::bootstrap}"></th:block>  <!-- ~ :  Alt+126(numerini)-->
+    <th:block th:replace="~{fragments/main.html::bootstrap}" />  <!-- ~ :  Alt+126(numerini)-->
+    <th:block th:replace="~{fragments/main.html::style_jsscript}" />
 </head>
-<body class="bg-warning">
+<body class="bg-warning debug" >
     <h2 th:if="${bestmovies != null}" th:text="|Best movies: ${bestmovies}|"></h2>
     <h2 th:text="${targetmovie!=null} ? 'Your movie: '+${targetmovie.title}   : 'Movie not found'"></h2>  
         <!--w java beans u can direclty access w targetmovie.title-->
+
+    <div class="container">
+        <div class="row">
+            <div class="col-4" th:each="movie:${bestmovies}">
+                <div class="card shadow">
+                    <div class="card-body text-center">
+                        <h3 th:text="${movie.id}" class="card-title"/>
+                        <span th:text="${movie.title}" class="card-text"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

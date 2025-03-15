@@ -16,7 +16,7 @@ public class MainController {
     
     private List<Movie> getBestMovies(){
         return Arrays.asList(
-                new Movie(1, "F&F"),
+                new Movie(1, "Fast & Furious"),
                 new Movie(2, "Interstellar"),
                 new Movie(3, "Onion Field")
         );
