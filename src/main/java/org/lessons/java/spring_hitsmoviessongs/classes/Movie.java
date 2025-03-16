@@ -16,9 +16,8 @@ public class Movie implements Serializable{   //Serilizable x conver to to java 
     public void setId(int theid){id=theid;}
     public void setTitle(String thetitle){title=thetitle;}
 
-    @Override  //convert correctly in str if u add a Movie instance to the model with model.addAttribute()
+    @Override  //convert correctly in str if u add a Movie instance to the model with model.addAttribute() or System.out.println(movie);
     public String toString() {
         return String.format("%s %s", id, title);
     }
-
 }

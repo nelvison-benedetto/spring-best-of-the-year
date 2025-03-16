@@ -7,19 +7,9 @@
     <th:block th:replace="~{fragments/main.html::bootstrap}" />  <!-- ~ :  Alt+126(numerini)-->
     <th:block th:replace="~{fragments/main.html::style_jsscript}" />
 </head>
-<body class="bg-info debug">
+<body class="bg-info">
     
-    <div class="container">
-        <h2 th:text ="|Best of the year by ${username}|" class="customclass w-100 text-start"/>
-        <div class="row">
-            <div class="col-3 p-5">
-                <h2 class="fw-bolder">Best Of</h2>
-            </div>
-            <div class="col-9">
-                <button>movies</button>
-                <button>songs</button>
-        </div>
-    </div>
-    </div>
+    <header th:replace="~{fragments/main.html::header}"/>
+    
 </body>
 </html>

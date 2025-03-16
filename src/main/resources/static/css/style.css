@@ -13,6 +13,6 @@ img{max-width: 100%;}
 }
 
 .customclass{
-    color: chartreuse;
-    background: #000;
+    color: rgb(0, 159, 29);
+    font-weight: bolder;
 }

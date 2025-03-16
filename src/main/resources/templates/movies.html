@@ -7,22 +7,37 @@
     <th:block th:replace="~{fragments/main.html::bootstrap}" />  <!-- ~ :  Alt+126(numerini)-->
     <th:block th:replace="~{fragments/main.html::style_jsscript}" />
 </head>
-<body class="bg-warning debug" >
-    <h2 th:if="${bestmovies != null}" th:text="|Best movies: ${bestmovies}|"></h2>
-    <h2 th:text="${targetmovie!=null} ? 'Your movie: '+${targetmovie.title}   : 'Movie not found'"></h2>  
+<body class="bg-warning debug">
+
+    <header th:replace="~{fragments/main.html::header}"/>
+
+    <!-- <h2 th:if="${bestmovies != null}" th:text="|Best movies: ${bestmovies}|"></h2> -->
+    <!-- <h2 th:text="${targetmovie!=null} ? 'Your movie: '+${targetmovie.title}   : 'Movie not found'"></h2>   -->
         <!--w java beans u can direclty access w targetmovie.title-->
 
-    <div class="container">
+    <div class="container border border-black mt-5">
+        <!-- <button class="btn btn-secondary" onclick="window.history.back();">Go Back</button> -->
+        <a th:href="@{/}">Return to HomePage</a>
+
         <div class="row">
             <div class="col-4" th:each="movie:${bestmovies}">
                 <div class="card shadow">
-                    <div class="card-body text-center">
-                        <h3 th:text="${movie.id}" class="card-title"/>
-                        <span th:text="${movie.title}" class="card-text"/>
+                    <div class="card-body text-center d-flex flex-column gap-2" th:object="${movie}">
+                        <h2 th:text="*{id}" class="card-title"/>
+                        <h3 th:text="*{title}" class="card-text"/>
+                        <a class="btn btn-success" role="button" th:href="@{/movies/{id} (id=*{id}) } ">View more</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <ul>
+        <li th:each="entry : ${#vars}">
+            <strong th:text="${entry.key}"></strong>: 
+            <span th:text="${entry.value}"></span>
+        </li>
+    </ul>
+
 </body>
 </html>

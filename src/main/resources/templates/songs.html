@@ -8,8 +8,28 @@
     <th:block th:replace="~{fragments/main.html::style_jsscript}" />
 </head>
 <body class="bg-danger">
-    <h2 th:if="${bestsongs != null}" th:text="|Best songs: ${bestsongs}|"></h2>
-    <h2 th:text="${targetsong!=null} ? 'Your song: '+${targetsong.title}   : 'Song not found'"></h2>  
-        <!--w java beans u can direclty access w targetsong.title-->
+    
+    <header th:replace="~{fragments/main.html::header}"/>
+
+    <!-- <h2 th:if="${bestmovies != null}" th:text="|Best movies: ${bestmovies}|"></h2> -->
+    <!-- <h2 th:text="${targetmovie!=null} ? 'Your movie: '+${targetmovie.title}   : 'Movie not found'"></h2>   -->
+    <!--w java beans u can direclty access w targetmovie.title-->
+
+    <div class="container border border-black mt-5">
+        <a th:href="@{/}">Return to HomePage</a>
+
+        <div class="row">
+            <div class="col-4" th:each="song:${bestsongs}">
+                <div class="card shadow">
+                    <div class="card-body text-center d-flex flex-column gap-2" th:object="${song}">
+                        <h2 th:text="*{id}" class="card-title"/>
+                        <h3 th:text="*{title}" class="card-text"/>
+                        <a class="btn btn-success" role="button" th:href="@{/songs/{id} (id=*{id}) } ">View more</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>
