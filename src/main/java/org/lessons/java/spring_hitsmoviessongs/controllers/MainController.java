@@ -25,19 +25,18 @@ public class MainController {
     
     private List<Movie> getBestMovies(){
         return Arrays.asList(
-                new Movie(1, "Fast & Furious"),
-                new Movie(2, "Interstellar"),
-                new Movie(3, "Onion Field")
+                new Movie(1, "Fast & Furious", "f&f.jpg"),
+                new Movie(2, "Atlas", "atlas.jpg"),
+                new Movie(3, "Onion Field","onion-field.jpg")
         );
     }
     private List<Song> getBestSongs() {
         return Arrays.asList(
-                new Song(1, "Shenzen"),
-                new Song(2, "Hotel Lux"),
-                new Song(3, "Imagine")
+                new Song(1, "Move","Camila Cabello", "https://www.youtube.com/embed/si6Ox8IuZeU?si=qT-VW88siBuPpO-h"),
+                new Song(2, "Shots in the dark","Iann Dior","https://www.youtube.com/embed/4ZMq4-T0DaQ?si=zfEKEThBnv9ynSWx"),
+                new Song(3, "I had some help","Post Malone","https://www.youtube.com/embed/4QIZE708gJ4?si=-YQUEDW4aPUo-bIE")
         );
     }
-
 
     @ModelAttribute("username")  
     public String getUsername(){    //se spring non trova 'username' nella sessione, allora chiama questo
@@ -65,6 +64,7 @@ public class MainController {
     }
 
 
+    //MOVIES
     @GetMapping({"/movies" ,"/movies/"})  //without '/movies/', if you navigate to localhost/movies/ you will get errors!
     public String moviesPage(
     Model model){
@@ -84,10 +84,9 @@ public class MainController {
         List<Movie> movies = getBestMovies(); 
         Movie targetmovie = movies.stream().filter(movie->movie.getId() == id).findFirst().orElse(null);
         model.addAttribute("targetmovie", targetmovie);
-        return "movies";
+
+        return "movie-detail";
     }
-
-
 
 
     //SONGS
@@ -104,14 +103,9 @@ public class MainController {
     public String songsPage(@PathVariable int id,
     Model model){
         List<Song> songs = getBestSongs();
-        Song targetsong = songs.stream().filter(song->song.getId()==id).findFirst().orElse(null);
+        Song targetsong = songs.stream().filter(song->song.getId() == id).findFirst().orElse(null);
         model.addAttribute("targetsong",targetsong);
-
-        model.addAttribute("username", "JohnDoe");
-        model.addAttribute("bestmovies", List.of("Interstellar", "Inception"));
-        model.addAttribute("currentYear", 2024);
-
-        return "songs";
+        return "song-detail";
     }
 
 }

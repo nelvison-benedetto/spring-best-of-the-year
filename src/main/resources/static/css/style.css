@@ -16,3 +16,6 @@ img{max-width: 100%;}
     color: rgb(0, 159, 29);
     font-weight: bolder;
 }
+.bg-orange{
+    background-color: rgb(255, 171, 44);
+}

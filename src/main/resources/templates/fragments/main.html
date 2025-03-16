@@ -3,6 +3,7 @@
 <th:block th:fragment="bootstrap">
     <!--devi usarlo come fragments xk qua non viene ereditato da nessuno-->
     <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}"/>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap-icons/1.11.3/font/bootstrap-icons.css}" />
     <script th:src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}" defer></script>
 </th:block>
 
@@ -35,8 +36,58 @@
 </header>
 
 
-<div>
-    
-</div>
+
+<article class="container mt-5 mb-3" th:fragment="movie-detail">
+    <div class="d-flex flex-column gap-2">
+        <span>
+            <i class="bi bi-arrow-left-circle-fill text-primary"></i>
+            <a th:href="@{/}">Return to HomePage</a>
+        </span>
+        <h2 th:text="${targetmovie != null} ? 'Movie Details' : 'Sorry, movie not found.'" class="text-success"/>
+        
+        <div th:if="${targetmovie != null}" th:object="${targetmovie}" class="bg-white rounded p-4 d-flex gap-4">
+            <div class="col-4">
+                <img th:src="@{/images/{img} (img=*{image}) }" alt="card img" class="card-img rounded">
+            </div>
+            <div class="col-8 d-flex flex-column gap-2 pt-2">
+                <h1 th:text="*{id}" class="card-title"/>
+                <h3 th:text="*{title}" class="card-text" style="color: rgb(58, 57, 57);"/>
+                <p class="text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis corporis obcaecati blanditiis totam ullam voluptatum deleniti expedita animi minus. Sapiente.</p>
+                <div class="d-flex flex-column mt-2" style="padding-right: 2.8rem;">
+                    <div class="align-self-end d-inline-block  bg-primary" style="border-radius: 50%; padding: 0 0.8rem; cursor:pointer">
+                        <i class="bi bi-play-fill text-white text-center" style="font-size: 3rem; padding-left: 0.2rem; margin-right: -0.1rem;"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</article>
 
 
+
+<article class="container mt-5 mb-3" th:fragment="song-detail">
+    <div class="d-flex flex-column gap-2">
+        <span>
+            <i class="bi bi-arrow-left-circle-fill text-primary"></i>
+            <a th:href="@{/}">Return to HomePage</a>
+        </span>
+        <h2 th:text="${targetsong != null} ? 'Song Details' : 'Sorry, song not found.'" class="text-success"/>
+        
+        <div th:if="${targetsong != null}" th:object="${targetsong}" class="bg-white rounded p-4 d-flex gap-4">
+            <div class="col-4">
+                <iframe class="rounded" width="100%" height="315" th:src="${targetsong.src}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <div class="col-8 d-flex flex-column gap-2 pt-2">
+                <h1 th:text="*{id}" class="card-title"/>
+                <h5 th:text="*{author}" class="card-text" style="margin-bottom: -0.3rem;" />
+                <h3 th:text="*{title}" class="card-text" style="color: rgb(58, 57, 57);"/>
+                <p class="text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis corporis obcaecati blanditiis totam ullam voluptatum deleniti expedita animi minus. Sapiente.</p>
+            </div>
+        </div>
+    </div>
+</article>
+
+
+<footer class="container" style="padding: 1rem" th:fragment="footer">
+    <p>&copy; <span th:text="${#dates.year(#dates.createNow())}" /> - All rights reserved.</p>
+</footer>

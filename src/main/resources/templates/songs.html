@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Songs</title>
+    <title>Songs Page</title>
     <th:block th:replace="~{fragments/main.html::bootstrap}" />  <!-- ~ :  Alt+126(numerini)-->
     <th:block th:replace="~{fragments/main.html::style_jsscript}" />
 </head>
-<body class="bg-danger">
+<body class="bg-orange">
     
     <header th:replace="~{fragments/main.html::header}"/>
 
@@ -15,10 +15,12 @@
     <!-- <h2 th:text="${targetmovie!=null} ? 'Your movie: '+${targetmovie.title}   : 'Movie not found'"></h2>   -->
     <!--w java beans u can direclty access w targetmovie.title-->
 
-    <div class="container border border-black mt-5">
-        <a th:href="@{/}">Return to HomePage</a>
-
-        <div class="row">
+    <div class="container mt-5">
+        <span>
+            <i class="bi bi-arrow-left-circle-fill text-primary"></i>
+            <a th:href="@{/}">Return to HomePage</a>
+        </span>
+        <div class="row mt-3">
             <div class="col-4" th:each="song:${bestsongs}">
                 <div class="card shadow">
                     <div class="card-body text-center d-flex flex-column gap-2" th:object="${song}">
